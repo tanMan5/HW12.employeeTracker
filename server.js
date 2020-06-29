@@ -141,3 +141,42 @@ function addRole() {
     });
 }
 
+function addEmployee() {
+    let roleList = [];
+    const newEmployee = [
+        {
+            type: "input",
+            message: "What is the employee's First Name?",
+            name: "firstName"
+        },
+        {
+            type: "input",
+            message: "What is the employee's Last Name?",
+            name: "lastName"   
+        }
+    ];
+    inquirer.prompt(newEmployee).then(function (response) {
+        connection.query("SELECT * FROM role", function (err, result) {
+            if (err) throw err;
+            for (let i = 0; i< result.length; i++) {
+                roleList.push(result[i].title);
+            }
+            inquirer.prompt({
+                type: "input",
+                name: "newRole",
+                message: "What is the role of the new Employee?",
+                choices: "roleList"                
+            }).then(function(answer) {
+                let roleId;
+                connection.query("SELECT * FROM role WHERE title = '" + answer.newRole + "'", function (err, result) {
+                    if (err) throw err;
+                    roleId = result[0].id;
+                    let query = "INSERT INTO employee (first_name, last_name, role_id) VALUES ('" + response.firstName + "', '" + response.lastName + "', '" + roleId + "')";
+                    if (err) throw err;
+                    console.log("Added New Employee");
+                    displayMenu();
+                });
+            });
+        });
+    });
+}
