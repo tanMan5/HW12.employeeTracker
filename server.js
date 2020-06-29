@@ -127,7 +127,7 @@ function addRole() {
         }
     ];
 
-    inquirer.prompt(prompts).then(function (response) {
+    inquirer.prompt(prompt).then(function (response) {
         const deptId = departmentResults.filter(record => {
             return record.dept_name === response.deptSelection;
         });
