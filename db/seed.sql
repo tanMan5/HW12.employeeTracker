@@ -24,3 +24,12 @@ CREATE TABLE employee(
     role_id INT NOT NULL,
     PRIMARY KEY (id)  
 );
+
+INSERT INTO role (title, salary) values ("Sales Lead", 100000);
+INSERT INTO role (title, salary) values ("Sales Person", 80000);
+INSERT INTO role (title, salary) values ("Lead Engineer", 250000);
+INSERT INTO role (title, salary) values ("Software Engineer", 150000);
+INSERT INTO role (title, salary) values ("Accounting lead", 180000);
+INSERT INTO role (title, salary) values ("Accountant", 100000);
+INSERT INTO role (title, salary) values ("Legal Team Lead", 150000);
+INSERT INTO role (title, salary) values ("Lawyer", 125000);
