@@ -89,7 +89,7 @@ function addDepartment() {
         message: "Enter Department Name:",
         name: "dept"
     }).then(function (answer) {
-        let query = "INSERT INTO department SET ?";
+        let query = "INSERT INTO department (name) VALUES ('" + answer.dept + "')";
         connection.query(query, function (err, result) {
             console.log("Department added");
             displayMenu()
