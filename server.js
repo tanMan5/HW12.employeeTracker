@@ -63,22 +63,22 @@ function displayMenu() {
 };
 
 function viewDepartments() {
-    connection.query("SELECT * FROM department", function (err, result) {
-        console.table(result);
+    connection.query("SELECT * FROM department", function (err, results) {
+        console.table(results);
         displayMenu();
     });
 }
 
 function viewRoles() {
-    connection.query("SELECT * FROM roles", function (err, result) {
-        console.table(result);
+    connection.query("SELECT * FROM roles", function (err, results) {
+        console.table(results);
         displayMenu();
     });
 }
 
 function viewEmployees() {
-    connection.query("SELECT * FROM employee", function (err, result) {
-        console.table(result);
+    connection.query("SELECT * FROM employee", function (err, results) {
+        console.table(results);
         displayMenu();
     });
 }
@@ -101,11 +101,11 @@ function addRole() {
     let departments = [];
     let departmentResults;
 
-    connection.query("SELECT * FROM department", function (err, result) {
+    connection.query("SELECT * FROM department", function (err, results) {
         if (err) console.log(err);
-        departmentResults = result;
-        for (let i = 0; i < result.length; i++) {
-            departments.push(result[i].dept_name);
+        departmentResults = results;
+        for (let i = 0; i < results.length; i++) {
+            departments.push(results[i].name);
         }
     })
     let prompt = [
@@ -129,7 +129,7 @@ function addRole() {
 
     inquirer.prompt(prompt).then(function (response) {
         const deptId = departmentResults.filter(record => {
-            return record.dept_name === response.deptSelection;
+            return record.name === response.deptSelection;
         });
 
         let query = "INSERT INTO role (title,salary, department_id) VALUES ('" + response.role + "', '" + ressponse.salary + "', '" + deptId[0].id + "')";
@@ -156,10 +156,10 @@ function addEmployee() {
         }
     ];
     inquirer.prompt(newEmployee).then(function (response) {
-        connection.query("SELECT * FROM role", function (err, result) {
+        connection.query("SELECT * FROM role", function (err, results) {
             if (err) throw err;
-            for (let i = 0; i < result.length; i++) {
-                roleList.push(result[i].title);
+            for (let i = 0; i < results.length; i++) {
+                roleList.push(results[i].title);
             }
             inquirer.prompt({
                 type: "input",
@@ -198,26 +198,26 @@ function updateEmployee() {
             name: "roleC"
         }
     ];
-    connection.query("SELECT * FROM role", function (err, result) {
+    connection.query("SELECT * FROM role", function (err, results) {
         if (err) throw err;
-        for (let i = 0; i < result.length; i++) {
-            role.push(result[i].title);
+        for (let i = 0; i < results.length; i++) {
+            role.push(results[i].title);
         }
     });
     connection.query("SELECT * FROM employee", function (err, result) {
         if (err) throw err;
-        for (let i = 0; i < result.length; i++) {
-            employee.push(result[i].first_name + " " + result[i].last_name);
+        for (let i = 0; i < results.length; i++) {
+            employee.push(results[i].first_name + " " + result[i].last_name);
         }
         inquirer.prompt(employeeUpdate).then(function (response) {
             const name = response.updateE.split(" ");
             let roleId;
-            connection.query("SELECT * FROM role WHERE title = '" + response.roleC + "'", function (err, result) {
+            connection.query("SELECT * FROM role WHERE title = '" + response.roleC + "'", function (err, results) {
                 if (err) throw err;
-                roleId = result[0].id;
+                roleId = results[0].id;
                 let query = "UPDATE employee SET role_id = '" + roleId + "' WHERE first_name = '" + name[0] + "' AND last_name = '" + name[1] + "')";
-                connection.query(query, function (err, result) {
-                    console.log(result.affectedRows + "record's updated");
+                connection.query(query, function (err, results) {
+                    console.log(results.affectedRows + "record's updated");
                     displayMenu();
                 });
             });
