@@ -1,11 +1,22 @@
 {
-    "name": "employee-Tracker",
-    "version": "1.0.0",
-    "description": "mysql",
-    "main": "server.js",
-    "dependencies": {
-        "console.table": "^0.10.0",
-        "inquirer": "^7.2.0",
-        "mysql": "^2.18.1"
-    }
+  "name": "hw12.employeetracker",
+  "version": "1.0.0",
+  "description": "For this homework assignment we were to create a command-line application that at a minimum allows the user to add departments, roles and employees.  Along with adding, the user should be able to view each of the above and update the employee roles.  Through the process of creating this command-line application, I used the MySQL NPM package and InquirerJs NPM package. I was not able to complete every step of this assignment and I am continuing to work on this.",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanMan5/HW12.employeeTracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tanMan5/HW12.employeeTracker/issues"
+  },
+  "homepage": "https://github.com/tanMan5/HW12.employeeTracker#readme"
 }
