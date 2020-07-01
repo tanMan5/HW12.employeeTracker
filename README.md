@@ -26,7 +26,7 @@ Update employee roles
 
 I was able to accomplish most of the acceptable criteria.  I was able to view all departments, roles, and employees.  I was also able to add employee to an extent.  I was also able to add departments.  I was not able to completely add employees and was not able to add roles and update employee roles.  I am continueing to work on each of the following not completed.  I am trying to use a similar function used for creating the departments for creating the roles and employees.  Below is an example of the application and what works and what does not:
 
-Example of PORT
+Example of Command-line Application
 ![Example](/assets/appExample.gif)
 
 
