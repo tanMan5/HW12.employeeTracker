@@ -90,7 +90,7 @@ function addDepartment() {
         name: "dept"
     }).then(function (answer) {
         let query = "INSERT INTO department (name) VALUES ('" + answer.dept + "')";
-        connection.query(query, function (err, result) {
+        connection.query(query, function (err, results) {
             console.log("Department added");
             displayMenu()
         })
@@ -100,6 +100,29 @@ function addDepartment() {
 
 
 function addRole() {
+    // addEmployee function works/trying to copy it...
+//     let departments = [];
+//     const departmentResults = [
+//         {
+//             type: "input",
+//             message: "What role are you adding?",
+//             name: "title"
+//         },
+//         {
+//             type: "input",
+//             message: "What is the salary for this Role?",
+//             name: "salary"
+//         }
+//     ];
+//     inquirer.prompt(departmentResults).then(function (response) {
+//         connection.query("SELECT * FROM department", function (err, results) {
+//             if (err) throw err;
+//             for (let i = 0; i < results.length; i++) {
+//                 departments.push(results[i].title);
+//             }
+//         })
+//     })
+// }
     const departments = [];
     let departmentResults;
 
@@ -124,7 +147,7 @@ function addRole() {
         {
             type: "list",
             message: "What is the department?",
-            choices: department,
+            choices: "departments",
             name: "deptSelection"
         }
     ];
@@ -134,7 +157,7 @@ function addRole() {
             return record.name == response.deptSelection;
         });
 
-        let query = "INSERT INTO role (title,salary, department_id) VALUES ('" + response.role + "', '" + response.salary + "', '" + response.deptSelection + "')";
+        let query = "INSERT INTO role (title,salary, department_id) VALUES ('" + response.role + "', '" + response.salary + "', '" + deptId[0].id+ "')";
         connenection.query(query, function (err, result) {
             if (err) console.log(err);
             console.log("New Role Added");
@@ -174,9 +197,11 @@ function addEmployee() {
                     if (err) throw err;
                     roleId = result[0].id;
                     let query = "INSERT INTO employee (first_name, last_name, role_id) VALUES ('" + response.firstName + "', '" + response.lastName + "', '" + roleId + "')";
+                    connection.query(query, function (err, results) {
                     if (err) throw err;
                     console.log("Added New Employee");
-                    displayMenu();
+                    displayMenu(); 
+                    });
                 });
             });
         });
@@ -212,12 +237,12 @@ function updateEmployee() {
             employee.push(results[i].first_name + " " + result[i].last_name);
         }
         inquirer.prompt(employeeUpdate).then(function (response) {
-            const name = response.updateE.split(" ");
+            const employeeName = response.updateE.split(" ");
             let roleId;
             connection.query("SELECT * FROM role WHERE title = '" + response.roleC + "'", function (err, results) {
                 if (err) throw err;
                 roleId = results[0].id;
-                let query = "UPDATE employee SET role_id = '" + roleId + "' WHERE first_name = '" + name[0] + "' AND last_name = '" + name[1] + "')";
+                let query = "UPDATE employee SET role_id = '" + roleId + "' WHERE first_name = '" + employeeName[0] + "' AND last_name = '" + employeeName[1] + "')";
                 connection.query(query, function (err, results) {
                     console.log(results.affectedRows + "record's updated");
                     displayMenu();
