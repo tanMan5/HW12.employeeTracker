@@ -70,7 +70,7 @@ function viewDepartments() {
 }
 
 function viewRoles() {
-    connection.query("SELECT * FROM roles", function (err, results) {
+    connection.query("SELECT * FROM role", function (err, results) {
         console.table(results);
         displayMenu();
     });
