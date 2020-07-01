@@ -97,8 +97,10 @@ function addDepartment() {
     })
 }
 
+
+
 function addRole() {
-    let departments = [];
+    const departments = [];
     let departmentResults;
 
     connection.query("SELECT * FROM department", function (err, results) {
@@ -122,17 +124,17 @@ function addRole() {
         {
             type: "list",
             message: "What is the department?",
-            choices: departments,
+            choices: department,
             name: "deptSelection"
         }
     ];
 
     inquirer.prompt(prompt).then(function (response) {
         const deptId = departmentResults.filter(record => {
-            return record.name === response.deptSelection;
+            return record.name == response.deptSelection;
         });
 
-        let query = "INSERT INTO role (title,salary, department_id) VALUES ('" + response.role + "', '" + ressponse.salary + "', '" + deptId[0].id + "')";
+        let query = "INSERT INTO role (title,salary, department_id) VALUES ('" + response.role + "', '" + response.salary + "', '" + response.deptSelection + "')";
         connenection.query(query, function (err, result) {
             if (err) console.log(err);
             console.log("New Role Added");
