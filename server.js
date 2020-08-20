@@ -145,70 +145,7 @@ function addRole() {
             });
     });
 }
-//     let departments = [];
-//     const departmentResults = [
-// //         {
-// //             type: "input",
-// //             message: "What role are you adding?",
-// //             name: "role"
-// //         },
-// //         {
-// //             type: "input",
-// //             message: "What is the salary for this Role?",
-// //             name: "salary"
-// //         }
-// //     ];
-// //     inquirer.prompt(departmentResults).then(function (response) {
-// //         connection.query("SELECT * FROM department", function (err, results) {
-// //             if (err) throw err;
-// //             for (let i = 0; i < results.length; i++) {
-// //                 departments.push(results[i].title);
-// //             }
-// //         })
-// //     })
-// // }
-// //     const departments = [];
-// //     let departmentResults;
 
-// //     connection.query("SELECT * FROM department", function (err, results) {
-// //         if (err) console.log(err);
-// //         departmentResults = results;
-// //         for (let i = 0; i < results.length; i++) {
-// //             departments.push(results[i].name);
-// //         }
-// //     })
-// //     let prompt = [
-// //         {
-// //             type: "input",
-// //             message: "What role are you adding?",
-// //             name: "role"
-// //         },
-// //         {
-// //             type: "input",
-// //             message: "What is the salary?",
-// //             name: "salary"
-// //         },
-// //         {
-// //             type: "list",
-// //             message: "What is the department?",
-// //             choices: "departments",
-// //             name: "deptSelection"
-// //         }
-// //     ];
-
-// //     inquirer.prompt(prompt).then(function (response) {
-// //         const deptId = departmentResults.filter(record => {
-// //             return record.name == response.deptSelection;
-// //         });
-
-// //         let query = "INSERT INTO role (title,salary, department_id) VALUES ('" + response.role + "', '" + response.salary + "', '" + deptId[0].id+ "')";
-// //         connenection.query(query, function (err, result) {
-// //             if (err) console.log(err);
-// //             console.log("New Role Added");
-// //             displayMenu();
-// //         })
-// //     });
-// // }
 
 function addEmployee() {
     connection.query("SELECT employee.first_name, employee.last_name, id FROM employee", function (err, results) {
@@ -262,45 +199,6 @@ function addEmployee() {
         });
     });
 }
-    // let roleList = [];
-    // const newEmployee = [
-    //     {
-    //         type: "input",
-    //         message: "What is the employee's First Name?",
-    //         name: "firstName"
-    //     },
-    //     {
-    //         type: "input",
-    //         message: "What is the employee's Last Name?",
-    //         name: "lastName"
-    //     }
-    // ];
-    // inquirer.prompt(newEmployee).then(function (response) {
-    //     connection.query("SELECT * FROM role", function (err, results) {
-    //         if (err) throw err;
-    //         for (let i = 0; i < results.length; i++) {
-    //             roleList.push(results[i].title);
-    //         }
-    //         inquirer.prompt({
-    //             type: "input",
-    //             name: "newRole",
-    //             message: "What is the role of the new Employee?",
-    //             choices: "roleList"
-    //         }).then(function (answer) {
-    //             let roleId;
-    //             connection.query("SELECT * FROM role WHERE title = '" + answer.newRole + "'", function (err, result) {
-    //                 if (err) throw err;
-    //                 roleId = result[0].id;
-    //                 let query = "INSERT INTO employee (first_name, last_name, role_id) VALUES ('" + response.firstName + "', '" + response.lastName + "', '" + roleId + "')";
-    //                 connection.query(query, function (err, results) {
-    //                     if (err) throw err;
-    //                     console.log("Added New Employee");
-    //                     displayMenu();
-    //                 });
-    //             });
-    //         });
-    //     });
-    // });
 
 
 function updateEmployee() {
