@@ -5,4 +5,4 @@ INSERT INTO department (name)
 VALUES ("Sales Lead"), ("Sales Person"), ("Lead Engineer"), ("Accountant"), ("Software Engineer"), ("Legal Team Lead"), ("Lawyer"), ("Lead Engineer");
 
 INSERT INTO role (title, salary, department_id)
-VALUES ("Sales", 75000, 1), ("Sales", 75000, 2), ("Engineering", 125000, 3), ("Finance", 100000, 4), ("Engineering", 75000, 5), ("Legal", 70000, 6), ("Legal", 85000, 7), ("Engineering", 50000, 8);
+VALUES ("Sales", 75000, 1), ("Sales Lead", 75000, 2), ("Engineering", 125000, 3), ("Finance", 100000, 4), ("Engineering", 75000, 5), ("Legal", 70000, 6), ("Legal", 85000, 7), ("Engineering", 50000, 8);

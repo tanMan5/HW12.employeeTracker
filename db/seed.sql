@@ -24,3 +24,6 @@ CREATE TABLE employee (
   role_id INT,
   PRIMARY KEY (id)
   );
+
+SELECT * FROM employee_db
+
