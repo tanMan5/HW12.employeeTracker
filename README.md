@@ -33,7 +33,7 @@ Example of view employees
 ![vewEmployees](/assets/viewEmployees.gif)
 
 Example of update employees
-![updateEmployees](/assets/updateEmployees.gif)
+![updateEmployees](/assets/updateEmployee.gif)
 
 Example of adding a role
 ![addRole](/assets/addRole.gif)
