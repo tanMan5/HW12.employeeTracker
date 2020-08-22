@@ -47,7 +47,7 @@ function displayMenu() {
             case "Add a Department":
                 addDepartment();
                 break;
-            case "Add a role":
+            case "Add a Role":
                 addRole();
                 break;
             case "Add an Employee":
